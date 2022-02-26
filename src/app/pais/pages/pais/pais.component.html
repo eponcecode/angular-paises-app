@@ -1,0 +1,35 @@
+<h2 class="list-group-item text-center list-group-item-danger">Por nombre 
+    <div class="animate__animated animate__zoomIn">
+        <small >{{termino | titlecase}}</small></div></h2>
+<hr>
+<div class="row">
+    <div class="col">
+        <app-pais-input
+        (onEnter)="buscar( $event )"
+        (onDebounce)="sugerencia( $event )"
+        placeholder="Buscar por nombre..."
+        ></app-pais-input>
+    </div>
+</div>
+
+<hr>
+<ul *ngIf="mostrarSugerencias" class="list-group">
+    <li *ngFor="let pais of sugerencias"
+    class="list-group-item list-group-item-action" style="cursor: pointer;"
+    [routerLink]="['/ver', pais.ccn3]">
+    {{pais.name.official}}
+    </li>
+    <li class="list-group-item list-group-item-action" style="cursor: pointer;"
+    (click)="buscar(termino)">
+    Buscar "{{termino}}"
+    </li>
+</ul>
+<div *ngIf="hayError" class="alert alert-primary">
+    No se encontró nada con el término {{termino}}
+</div>
+<div *ngIf="!hayError && paises && termino!== ''" class="row">
+    <div class="col">
+        <app-pais-tabla [paises]="paises"></app-pais-tabla>
+    </div>
+</div>
+

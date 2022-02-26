@@ -1,0 +1,24 @@
+<table class="table table-hover">
+    <thead class="animate__animated animate__fadeInDown">
+        <tr>
+            <th>#Código</th>
+            <th>Bandera</th>
+            <th>Nombre</th>
+            <th>Capital</th>
+            <th>Región</th>
+            <th>Población</th>
+            <th>Más información</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let pais of paisesRegion" class="animate__animated animate__rotateInDownLeft">
+            <td>{{pais.alpha3Code}}</td>
+            <td><img class="small-flag" src={{pais.flags.png}}></td>
+            <td>{{pais.name}}</td>
+            <td>{{pais.capital}}</td>
+            <td>{{pais.region}}</td>
+            <td>{{pais.population}}</td>
+            <td><a href="#" [routerLink]="['/ver', pais.alpha3Code]">Ver más...</a></td>
+        </tr>
+    </tbody>
+</table>

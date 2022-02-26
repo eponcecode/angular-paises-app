@@ -1,0 +1,117 @@
+<div *ngIf="hayError else divInfo"
+class="alert alert-danger">
+<h2 class="list-group-item text-center list-group-item-danger">Error</h2>
+<hr>
+ No se encuentra país con ese código
+</div>
+
+<ng-template #divInfo>
+<div *ngIf="!datos else divPais"
+class="alert alert-info">
+<h2 class="list-group-item text-center list-group-item-danger">Data Loading...</h2>
+<hr>
+    Espere por favor...
+</div>
+</ng-template>
+
+
+<ng-template #divPais>
+    <h2 class="list-group-item text-center list-group-item-danger">{{datos.name.official}}</h2>
+    <hr>
+    <div class="table table-hover">
+        <div>
+            <h1>#{{datos.ccn3}}  {{datos.name.common}} </h1>
+            <h3>Nombre oficial: <i>{{datos.name.official}}</i></h3>
+        </div>
+        <div class="row">
+            <div class="col-6">
+                <br>
+                    <div class="row">
+                        <div class="col-6">
+                            <b>Capital</b>
+                            <p>{{datos.capital}}</p>
+                        </div>
+                        <div class="col-6">
+                            <b>Población</b>
+                            <p>{{datos.population | number}}</p>
+                        </div>
+                        <div class="col-6">
+                            <b>Región</b>
+                            <p>{{datos.region}}</p>
+                        </div>
+                        <div class="col-6">
+                            <b>Subregión</b>
+                            <p>{{datos.subregion}}</p>
+                        </div>
+                        <div class="col-6">
+                            <b>Continente</b>
+                            <p>{{datos.continents}}</p>
+                        </div>
+                        <div class="col-6">
+                            <b>Inicio de semana</b>
+                            <p>{{datos.startOfWeek}}</p>
+                        </div>
+                </div>
+            </div>
+            <div class="col-6">
+            <br>
+                <img class="medium-flag img-thumbnail" src={{datos.flags.png}}>
+            </div>
+        </div>
+        <div *ngIf="!translations else divTranslations"
+        class="alert alert-info">
+        <h2 class="list-group-item text-center list-group-item-danger">Data Loading...</h2>
+        <hr>Espere por favor...</div>
+        <ng-template #divTranslations>
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <b>TRANSLATIONS</b>
+                        <div class="col">
+                            <br>
+                            <p>{{translations.ara.common}}</p>
+                            <p>{{translations.ces.common}}</p>
+                            <p>{{translations.cym.common}}</p>
+                            <p>{{translations.deu.common}}</p>
+                        </div>
+                        <div class="col">
+                            <br>
+                            <p>{{translations.est.common}}</p>
+                            <p>{{translations.fin.common}}</p>
+                            <p>{{translations.fra.common}}</p>
+                            <p>{{translations.hrv.common}}</p>
+                        </div>
+                        <div class="col">
+                            <br>
+                            <p>{{translations.hun.common}}</p>
+                            <p>{{translations.ita.common}}</p>
+                            <p>{{translations.jpn.common}}</p>
+                            <p>{{translations.kor.common}}</p>
+                        </div>
+                        <div class="col">
+                            <br>
+                            <p>{{translations.nld.common}}</p>
+                            <p>{{translations.per.common}}</p>
+                            <p>{{translations.pol.common}}</p>
+                            <p>{{translations.por.common}}</p>
+                        </div>
+                        <div class="col">
+                            <br>
+                            <p>{{translations.rus.common}}</p>
+                            <p>{{translations.slk.common}}</p>
+                            <p>{{translations.spa.common}}</p>
+                            <p>{{translations.swe.common}}</p>
+                        </div>
+                        <div class="col">
+                            <br>
+                            <p>{{translations.urd.common}}</p>
+                            <p>{{translations.zho.common}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+        
+    </div>
+</ng-template>
+

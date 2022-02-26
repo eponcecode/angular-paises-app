@@ -1,0 +1,38 @@
+<h2 class="list-group-item text-center list-group-item-danger ">Por region 
+    <div class="animate__animated animate__zoomIn">
+        <small >{{regionActiva | titlecase}}</small></div> </h2>
+<hr>
+<h5>Seleccione la región</h5>
+<br>
+<div class="row">
+    <div class="col-12">
+        <!--
+            [class]="(region === regionActiva) ? 'btn btn-danger' : 'btn btn-outline-danger'"
+            getClaseCSS(region)
+        -->
+        <!--
+            [class.btn-danger]="region === regionActiva"
+        -->
+        <!--
+            [ngClass]="{
+            'btn-danger':region === regionActiva,
+            'btn-outline-danger':region !== regionActiva
+        }"
+        -->
+        <button *ngFor="let region of regiones" type="button"
+        class="me-md-2 animate__animated animate__fadeInDown"
+        [class]="(region === regionActiva) ? 'btn btn-danger' : 'btn btn-outline-danger'"
+        (click)="activarRegion(region)">
+            {{region | titlecase}}
+        </button>
+    </div>
+</div>
+<hr>
+<div *ngIf="hayError" class="alert alert-primary">
+    No se encontró nada con el término {{regionActiva}}
+</div>
+<div *ngIf="!hayError && paises && regionActiva!== ''" class="row">
+    <div class="col">
+        <app-region-tabla [paisesRegion]="paises"></app-region-tabla>
+    </div>
+</div>
