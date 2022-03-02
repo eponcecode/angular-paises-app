@@ -12,7 +12,9 @@ export class PaisService {
   .set('fields','fields=alpha3Code,name,capital,region,population,flags,alpha3Code')
   private httpParams = new HttpParams()
   .set('fields','fields=ccn3,name,capital,region,population,flags,ccn3')
-  constructor(private http: HttpClient) { }
+
+  constructor(private http: HttpClient) { 
+  }
   buscarNombre(termino:string): Observable<Country[]>{
     const url = `${this.apiUrl}/name/${termino}`;
     return this.http.get<Country[]>(url,{params: this.httpParams});
